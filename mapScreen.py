@@ -1,4 +1,5 @@
 import pyautogui     
+from arquivoDeConfiguracao import ArquivoDeConfiguracao
 
 print("")
 print("##################################")
@@ -9,21 +10,21 @@ print('Coloque o mouse sobre o local que ficará os campos mencionados e precion
 print("")
 print('Coloque o mouse sobre')
 
-doc_config = ''
+config = ArquivoDeConfiguracao()
 
 input('- O campo chave de acesso: ')
 
-doc_config = doc_config + 'CHAVE_ACESSO_X=' + str(pyautogui.position()[0]) + '\n'
-doc_config = doc_config + 'CHAVE_ACESSO_Y=' + str(pyautogui.position()[1]) + '\n'
+config.addLine('CHAVE_ACESSO_X', str(pyautogui.position()[0]) )
+config.addLine('CHAVE_ACESSO_Y', str(pyautogui.position()[1]) )
 
-print(pyautogui.position())
+print('Leitura realizada')
 
 input("- O botão [Salvar Nota]: ")
 
-doc_config = doc_config + 'SALVAR_NOTA_SAT_X=' + str(pyautogui.position()[0]) + '\n'
-doc_config = doc_config + 'SALVAR_NOTA_SAT_Y=' + str(pyautogui.position()[1]) + '\n'
+config.addLine('SALVAR_NOTA_SAT_X', str(pyautogui.position()[0]) )
+config.addLine('SALVAR_NOTA_SAT_Y', str(pyautogui.position()[1]) )
 
-print(pyautogui.position())
+print('Leitura realizada')
 
 print("")
 print("####################################")
@@ -36,31 +37,37 @@ print('Coloque o mouse sobre')
 
 input('- O campo CNPJ do Emissor da Nota: ')
 
-doc_config = doc_config + 'CNPJ_EMISSOR_X=' + str(pyautogui.position()[0]) + '\n'
-doc_config = doc_config + 'CNPJ_EMISSOR_Y=' + str(pyautogui.position()[1]) + '\n'
+config.addLine('CNPJ_EMISSOR_X', str(pyautogui.position()[0]) )
+config.addLine('CNPJ_EMISSOR_Y', str(pyautogui.position()[1]) )
 
-print(pyautogui.position())
+print('Leitura realizada')
 
 input("- O botão [Salvar Nota]: ")
 
-doc_config = doc_config + 'SALVAR_NOTA_CUPOM_X=' + str(pyautogui.position()[0]) + '\n'
-doc_config = doc_config + 'SALVAR_NOTA_CUPOM_Y=' + str(pyautogui.position()[1]) + '\n'
+config.addLine('SALVAR_NOTA_CUPOM_X', str(pyautogui.position()[0]) )
+config.addLine('SALVAR_NOTA_CUPOM_Y', str(pyautogui.position()[1]) )
 
-print(pyautogui.position())
+print('Leitura realizada')
 
+print("")
 print("#######################################")
 print("Agora vamos configurar outros controles")
 print("#######################################")
 print("")
 
-doc_config = doc_config + 'ERROS_SEGUIDOS=' + input("- Qual a quantidade de erros seguidos que podem ocorrer? ") + '\n'
+config.addLine('ERROS_SEGUIDOS', input("- Qual a quantidade de erros seguidos que podem ocorrer? "))
 
-doc_config = doc_config + 'SAT_TOTAL_MINUTO=' + input("- Qual a quantidade maxima de SAT, podem ser registrados por minutos? ") + '\n'
+config.addLine('SAT_TOTAL_MINUTO', input("- Qual a quantidade de erros seguidos que podem ocorrer? "))
 
-doc_config = doc_config + 'CUPOM_TOTAL_MINUTO=' + input("- Qual a quantidade maxima de Cupom, podem ser registrados por minutos? ") + '\n'
+config.addLine('CUPOM_TOTAL_MINUTO', input("- Qual a quantidade de erros seguidos que podem ocorrer? "))
 
-arquivo = open('config.ini','w')
-arquivo.write(doc_config + '\n')
-arquivo.close()
 
-#return 'Sucesso!\n\n'
+print("")
+print("##############################")
+print("Visualização do arquivo gerado")
+print("##############################")
+print("")
+
+config.content()
+
+config.post()
