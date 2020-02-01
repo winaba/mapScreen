@@ -4,6 +4,7 @@ from arquivoDeConfiguracao import ArquivoDeConfiguracao
 class RotinasDeConfiguracao:
     def __init__(self):
         self.config = ArquivoDeConfiguracao()
+        self.pos = pyautogui 
 
     def configuraArquivoSAT(self):
         print("")
@@ -17,15 +18,15 @@ class RotinasDeConfiguracao:
 
         input('- O campo chave de acesso: ')
 
-        self.config.addLine('CHAVE_ACESSO_X', str(pyautogui.position()[0]) )
-        self.config.addLine('CHAVE_ACESSO_Y', str(pyautogui.position()[1]) )
+        self.config.addLine('CHAVE_ACESSO_X', str(self.pos.position()[0]) )
+        self.config.addLine('CHAVE_ACESSO_Y', str(self.pos.position()[1]) )
 
         print('Leitura realizada')
 
         input("- O botão [Salvar Nota]: ")
 
-        self.config.addLine('SALVAR_NOTA_SAT_X', str(pyautogui.position()[0]) )
-        self.config.addLine('SALVAR_NOTA_SAT_Y', str(pyautogui.position()[1]) )
+        self.config.addLine('SALVAR_NOTA_SAT_X', str(self.pos.position()[0]) )
+        self.config.addLine('SALVAR_NOTA_SAT_Y', str(self.pos.position()[1]) )
 
         print('Leitura realizada')
 
@@ -41,15 +42,15 @@ class RotinasDeConfiguracao:
 
         input('- O campo CNPJ do Emissor da Nota: ')
 
-        self.config.addLine('CNPJ_EMISSOR_X', str(pyautogui.position()[0]) )
-        self.config.addLine('CNPJ_EMISSOR_Y', str(pyautogui.position()[1]) )
+        self.config.addLine('CNPJ_EMISSOR_X', str(self.pos.position()[0]) )
+        self.config.addLine('CNPJ_EMISSOR_Y', str(self.pos.position()[1]) )
 
         print('Leitura realizada')
 
         input("- O botão [Salvar Nota]: ")
 
-        self.config.addLine('SALVAR_NOTA_CUPOM_X', str(pyautogui.position()[0]) )
-        self.config.addLine('SALVAR_NOTA_CUPOM_Y', str(pyautogui.position()[1]) )
+        self.config.addLine('SALVAR_NOTA_CUPOM_X', str(self.pos.position()[0]) )
+        self.config.addLine('SALVAR_NOTA_CUPOM_Y', str(self.pos.position()[1]) )
 
         print('Leitura realizada')
 
